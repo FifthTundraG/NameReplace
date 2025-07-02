@@ -10,19 +10,12 @@
   "icon": "assets/no_death_only_dogg/icon.png",
   "environment": "server",
   "entrypoints": {
-    "fabric-datagen": [
-      "io.github.fifthtundrag.no_death_only_dogg.client.NoDeathOnlyDoggDataGenerator"
-    ],
     "main": [
       "io.github.fifthtundrag.no_death_only_dogg.NoDeathOnlyDogg"
     ]
   },
   "mixins": [
-    "no_death_only_dogg.mixins.json",
-    {
-      "config": "no_death_only_dogg.client.mixins.json",
-      "environment": "client"
-    }
+    "no_death_only_dogg.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
