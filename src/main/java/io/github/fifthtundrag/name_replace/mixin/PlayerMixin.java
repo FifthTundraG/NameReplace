@@ -1,7 +1,7 @@
-package io.github.fifthtundrag.no_death_only_dogg.mixin;
+package io.github.fifthtundrag.name_replace.mixin;
 
 import com.mojang.authlib.GameProfile;
-import io.github.fifthtundrag.no_death_only_dogg.NoDeathOnlyDogg;
+import io.github.fifthtundrag.name_replace.NameReplace;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Final;
@@ -20,8 +20,8 @@ public class PlayerMixin {
 
     @Inject(at = @At("HEAD"), method = "getName", cancellable = true)
     private void getName(CallbackInfoReturnable<Component> cir) {
-        if (Objects.equals(this.gameProfile.getName(), NoDeathOnlyDogg.NEW_NAME)) {
-            cir.setReturnValue(Component.literal(String.format("%s (formerly known as %s)", NoDeathOnlyDogg.NEW_NAME, NoDeathOnlyDogg.OLD_NAME)));
+        if (Objects.equals(this.gameProfile.getName(), NameReplace.NEW_NAME)) {
+            cir.setReturnValue(Component.literal(String.format("%s (formerly known as %s)", NameReplace.NEW_NAME, NameReplace.OLD_NAME)));
         }
     }
 }

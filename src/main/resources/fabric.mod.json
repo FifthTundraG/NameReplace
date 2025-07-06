@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "no_death_only_dogg",
+  "id": "name_replace",
   "version": "${version}",
-  "name": "No Death, Only Dogg",
+  "name": "Name Replace",
   "description": "",
   "authors": [],
   "contact": {},
   "license": "GPL-3.0",
-  "icon": "assets/no_death_only_dogg/icon.png",
+  "icon": "assets/name_replace/icon.png",
   "environment": "server",
   "entrypoints": {
     "main": [
-      "io.github.fifthtundrag.no_death_only_dogg.NoDeathOnlyDogg"
+      "io.github.fifthtundrag.name_replace.NameReplace"
     ]
   },
   "mixins": [
-    "no_death_only_dogg.mixins.json"
+    "name_replace.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

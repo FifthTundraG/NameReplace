@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "io.github.fifthtundrag.no_death_only_dogg.mixin",
+  "package": "io.github.fifthtundrag.name_replace.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "ClientboundPlayerInfoUpdatePacketEntryMixin",

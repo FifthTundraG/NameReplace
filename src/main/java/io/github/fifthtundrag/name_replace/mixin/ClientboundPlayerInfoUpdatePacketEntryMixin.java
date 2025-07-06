@@ -1,6 +1,6 @@
-package io.github.fifthtundrag.no_death_only_dogg.mixin;
+package io.github.fifthtundrag.name_replace.mixin;
 
-import io.github.fifthtundrag.no_death_only_dogg.NoDeathOnlyDogg;
+import io.github.fifthtundrag.name_replace.NameReplace;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
@@ -24,8 +24,8 @@ public class ClientboundPlayerInfoUpdatePacketEntryMixin {
             )
     )
     private static Component redirectDisplayName(ServerPlayer player) {
-        if (Objects.equals(player.getGameProfile().getName(), NoDeathOnlyDogg.NEW_NAME)) {
-            final String newName = String.format("%s (formerly known as %s)", NoDeathOnlyDogg.NEW_NAME, NoDeathOnlyDogg.OLD_NAME);
+        if (Objects.equals(player.getGameProfile().getName(), NameReplace.NEW_NAME)) {
+            final String newName = String.format("%s (formerly known as %s)", NameReplace.NEW_NAME, NameReplace.OLD_NAME);
             // these two lines are stolen from ServerPlayer#getDisplayName, can we figure out a way to not copy/paste them?
             MutableComponent mutableComponent = PlayerTeam.formatNameForTeam(player.getTeam(), Component.literal(newName));
             return ((PlayerInvoker) player).callDecorateDisplayNameComponent(mutableComponent);
