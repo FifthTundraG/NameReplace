@@ -1,0 +1,5 @@
+{
+  "commands.namereplace.add.success": "Set name for %s to \"%s\". Clients may need to disconnect and reconnect before this name shows in the tablist.",
+  "commands.namereplace.remove.success": "Removed custom name for %s. Clients may need to disconnect and reconnect before the name changes in the tablist.",
+  "commands.namereplace.clear.success": "Cleared all replaced names. Clients may need to disconnect and reconnect before original names show in the tablist."
+}

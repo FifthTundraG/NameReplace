@@ -6,7 +6,8 @@
   "mixins": [
     "ClientboundPlayerInfoUpdatePacketEntryMixin",
     "PlayerInvoker",
-    "PlayerMixin"
+    "PlayerMixin",
+    "CommandsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

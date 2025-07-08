@@ -10,8 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import java.util.Objects;
-
 // This is used for the client so it has the correct display name. This will show in the tablist but not nametags.
 @Mixin(ClientboundPlayerInfoUpdatePacket.Entry.class)
 public class ClientboundPlayerInfoUpdatePacketEntryMixin {
@@ -24,8 +22,9 @@ public class ClientboundPlayerInfoUpdatePacketEntryMixin {
             )
     )
     private static Component redirectDisplayName(ServerPlayer player) {
-        if (Objects.equals(player.getGameProfile().getName(), NameReplace.NEW_NAME)) {
-            final String newName = String.format("%s (formerly known as %s)", NameReplace.NEW_NAME, NameReplace.OLD_NAME);
+        String realPlayerName = player.getGameProfile().getName();
+        if (NameReplace.config.containsKey(realPlayerName)) {
+            final String newName = NameReplace.config.get(realPlayerName);
             // these two lines are stolen from ServerPlayer#getDisplayName, can we figure out a way to not copy/paste them?
             MutableComponent mutableComponent = PlayerTeam.formatNameForTeam(player.getTeam(), Component.literal(newName));
             return ((PlayerInvoker) player).callDecorateDisplayNameComponent(mutableComponent);

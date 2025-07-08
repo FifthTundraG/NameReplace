@@ -11,8 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Objects;
-
 // This is used for whenever the *server* broadcasts the player's name.
 @Mixin(Player.class)
 public class PlayerMixin {
@@ -20,8 +18,10 @@ public class PlayerMixin {
 
     @Inject(at = @At("HEAD"), method = "getName", cancellable = true)
     private void getName(CallbackInfoReturnable<Component> cir) {
-        if (Objects.equals(this.gameProfile.getName(), NameReplace.NEW_NAME)) {
-            cir.setReturnValue(Component.literal(String.format("%s (formerly known as %s)", NameReplace.NEW_NAME, NameReplace.OLD_NAME)));
+        String realPlayerName = this.gameProfile.getName();
+        if (NameReplace.config.containsKey(realPlayerName)) {
+            final String newName = NameReplace.config.get(realPlayerName);
+            cir.setReturnValue(Component.literal(newName));
         }
     }
 }
