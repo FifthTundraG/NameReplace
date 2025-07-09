@@ -12,7 +12,7 @@ public class NameReplace implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("NameReplace");
     public static final Gson GSON = new Gson();
 
-    public static final ConfigIO configIO = new ConfigIO(FabricLoader.getInstance().getConfigDir().resolve("name_replace.txt"));
+    public static final ConfigIO configIO = new ConfigIO(FabricLoader.getInstance().getConfigDir().resolve("name_replace.json"));
     public static Config config;
 
     @Override

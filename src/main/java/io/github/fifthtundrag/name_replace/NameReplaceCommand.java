@@ -5,6 +5,10 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
+import net.minecraft.server.players.PlayerList;
+
+import java.util.EnumSet;
 
 public class NameReplaceCommand {
     public static void register(CommandDispatcher<CommandSourceStack> commandDispatcher) {
@@ -42,6 +46,7 @@ public class NameReplaceCommand {
         NameReplace.configIO.save(NameReplace.config);
 
         commandSourceStack.sendSuccess(() -> Component.translatable("commands.namereplace.add.success", oldName, newName), true);
+        sendPlayerInfoUpdate(commandSourceStack.getServer().getPlayerList());
         return 1;
     }
 
@@ -50,6 +55,7 @@ public class NameReplaceCommand {
         NameReplace.configIO.save(NameReplace.config);
 
         commandSourceStack.sendSuccess(() -> Component.translatable("commands.namereplace.remove.success", name), true);
+        sendPlayerInfoUpdate(commandSourceStack.getServer().getPlayerList());
         return 1;
     }
 
@@ -57,7 +63,12 @@ public class NameReplaceCommand {
         NameReplace.config.clear();
         NameReplace.configIO.save(NameReplace.config);
 
-        commandSourceStack.sendSuccess(() -> Component.translatable("commands.namereplace.clear.success", 1, 1), true);
+        commandSourceStack.sendSuccess(() -> Component.translatable("commands.namereplace.clear.success"), true);
+        sendPlayerInfoUpdate(commandSourceStack.getServer().getPlayerList());
         return 1;
+    }
+
+    private static void sendPlayerInfoUpdate(PlayerList playerList) {
+        playerList.broadcastAll(new ClientboundPlayerInfoUpdatePacket(EnumSet.of(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_DISPLAY_NAME), playerList.getPlayers()));
     }
 }
