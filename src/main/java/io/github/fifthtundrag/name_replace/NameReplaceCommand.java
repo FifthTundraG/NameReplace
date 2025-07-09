@@ -15,6 +15,10 @@ public class NameReplaceCommand {
         commandDispatcher.register(
                 Commands.literal("namereplace")
                         .requires(commandSourceStack -> commandSourceStack.hasPermission(3))
+                        .executes(commandContext -> {
+                            commandContext.getSource().sendSuccess(() -> Component.literal(NameReplace.config.toString()), false);
+                            return 1;
+                        })
                         .then(Commands.literal("add")
                             .then(Commands.argument("old_name", StringArgumentType.word())
                                 .then(Commands.argument("new_name", StringArgumentType.string())

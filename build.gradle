@@ -14,7 +14,7 @@ loom {
     splitEnvironmentSourceSets()
 
     mods {
-        "no_death_only_dogg" {
+        "name_replace" {
             sourceSet sourceSets.main
             sourceSet sourceSets.client
         }
@@ -44,7 +44,7 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.layered() {
         officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-1.20.2:2023.10.08@zip")
+        parchment("org.parchmentmc.data:parchment-1.21.4:2025.03.23@zip")
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
