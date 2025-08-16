@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "id": "name_replace",
   "version": "${version}",
-  "name": "Name Replace",
-  "description": "",
-  "authors": [],
+  "name": "NameReplace",
+  "description": "Allows replacing a player's name in the tablist and in chat messages with another name",
+  "authors": ["FifthTundraG"],
   "contact": {},
   "license": "GPL-3.0",
   "icon": "assets/name_replace/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "io.github.fifthtundrag.name_replace.NameReplace"
