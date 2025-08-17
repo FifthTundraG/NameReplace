@@ -49,7 +49,8 @@ public class NameReplaceCommand {
         NameReplace.config.put(oldName, newName);
         NameReplace.configIO.save(NameReplace.config);
 
-        commandSourceStack.sendSuccess(() -> Component.translatable("commands.namereplace.add.success", oldName, newName), true);
+        // note to self: i18n isn't possible thru mojang's builtin system bc the server sends translation keys to the client and expects it to figure it out. the client won't have our lang files unless it also has the mod installed so it justs prints raw translation keys. this obviously will only work with english but at least it's better than the raw key.
+        commandSourceStack.sendSuccess(() -> Component.literal(String.format("Set name for %s to \"%s\".", oldName, newName)), true);
         sendPlayerInfoUpdate(commandSourceStack.getServer().getPlayerList());
         return 1;
     }
@@ -58,7 +59,7 @@ public class NameReplaceCommand {
         NameReplace.config.remove(name);
         NameReplace.configIO.save(NameReplace.config);
 
-        commandSourceStack.sendSuccess(() -> Component.translatable("commands.namereplace.remove.success", name), true);
+        commandSourceStack.sendSuccess(() -> Component.literal(String.format("Removed custom name for %s.", name)), true);
         sendPlayerInfoUpdate(commandSourceStack.getServer().getPlayerList());
         return 1;
     }
@@ -67,7 +68,7 @@ public class NameReplaceCommand {
         NameReplace.config.clear();
         NameReplace.configIO.save(NameReplace.config);
 
-        commandSourceStack.sendSuccess(() -> Component.translatable("commands.namereplace.clear.success"), true);
+        commandSourceStack.sendSuccess(() -> Component.literal("Cleared all replaced names."), true);
         sendPlayerInfoUpdate(commandSourceStack.getServer().getPlayerList());
         return 1;
     }

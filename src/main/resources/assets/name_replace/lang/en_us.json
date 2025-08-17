@@ -1,5 +1,0 @@
-{
-  "commands.namereplace.add.success": "Set name for %s to \"%s\".",
-  "commands.namereplace.remove.success": "Removed custom name for %s.",
-  "commands.namereplace.clear.success": "Cleared all replaced names."
-}
