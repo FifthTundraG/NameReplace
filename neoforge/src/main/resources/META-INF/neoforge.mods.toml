@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/FifthTundraG/NameReplace/issues"
+license = "GPLv3"
+
+[[mods]]
+modId = "namereplace"
+version = "${version}"
+displayName = "NameReplace"
+authors = "FifthTundraG"
+description = '''
+Allows replacing a player's name in the tablist and in chat messages with another name
+'''
+logoFile = "META-INF/icon.png"
+
+[[dependencies.namereplace]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "SERVER"
+
+[[dependencies.namereplace]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21,)"
+ordering = "NONE"
+side = "SERVER"
+
+[[mixins]]
+config = "namereplace.mixins.json"

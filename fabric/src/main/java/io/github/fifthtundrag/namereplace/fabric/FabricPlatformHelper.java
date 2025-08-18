@@ -5,6 +5,7 @@ import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;
 
+@SuppressWarnings("unused")
 public class FabricPlatformHelper implements PlatformHelper {
     @Override
     public Path getConfigDir() {
