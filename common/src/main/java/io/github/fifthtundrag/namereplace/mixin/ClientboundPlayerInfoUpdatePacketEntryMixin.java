@@ -1,6 +1,6 @@
-package io.github.fifthtundrag.name_replace.mixin;
+package io.github.fifthtundrag.namereplace.mixin;
 
-import io.github.fifthtundrag.name_replace.NameReplace;
+import io.github.fifthtundrag.namereplace.NameReplace;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;

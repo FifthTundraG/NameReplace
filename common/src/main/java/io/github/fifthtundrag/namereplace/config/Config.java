@@ -1,4 +1,4 @@
-package io.github.fifthtundrag.name_replace.config;
+package io.github.fifthtundrag.namereplace.config;
 
 import java.util.HashMap;
 

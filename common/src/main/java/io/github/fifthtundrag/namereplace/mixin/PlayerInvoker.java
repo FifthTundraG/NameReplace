@@ -1,4 +1,4 @@
-package io.github.fifthtundrag.name_replace.mixin;
+package io.github.fifthtundrag.namereplace.mixin;
 
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;

@@ -1,7 +1,7 @@
-package io.github.fifthtundrag.name_replace.config;
+package io.github.fifthtundrag.namereplace.config;
 
 import com.google.gson.reflect.TypeToken;
-import io.github.fifthtundrag.name_replace.NameReplace;
+import io.github.fifthtundrag.namereplace.NameReplace;
 
 import java.io.*;
 import java.lang.reflect.Type;

@@ -1,4 +1,4 @@
-package io.github.fifthtundrag.name_replace;
+package io.github.fifthtundrag.namereplace;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;

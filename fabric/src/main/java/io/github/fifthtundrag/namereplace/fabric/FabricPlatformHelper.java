@@ -1,6 +1,6 @@
-package io.github.fifthtundrag.name_replace.fabric;
+package io.github.fifthtundrag.namereplace.fabric;
 
-import io.github.fifthtundrag.name_replace.util.PlatformHelper;
+import io.github.fifthtundrag.namereplace.util.PlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;

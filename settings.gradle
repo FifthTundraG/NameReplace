@@ -10,7 +10,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'name_replace'
+rootProject.name = 'namereplace'
 
 include 'common'
 include 'fabric'

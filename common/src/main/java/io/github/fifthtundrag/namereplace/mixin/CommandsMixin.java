@@ -1,7 +1,7 @@
-package io.github.fifthtundrag.name_replace.mixin;
+package io.github.fifthtundrag.namereplace.mixin;
 
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.fifthtundrag.name_replace.NameReplaceCommand;
+import io.github.fifthtundrag.namereplace.NameReplaceCommand;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;

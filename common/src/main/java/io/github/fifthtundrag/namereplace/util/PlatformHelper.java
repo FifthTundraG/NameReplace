@@ -1,4 +1,4 @@
-package io.github.fifthtundrag.name_replace.util;
+package io.github.fifthtundrag.namereplace.util;
 
 import java.nio.file.Path;
 

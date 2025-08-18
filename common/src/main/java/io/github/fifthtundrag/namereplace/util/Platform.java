@@ -1,11 +1,11 @@
-package io.github.fifthtundrag.name_replace.util;
+package io.github.fifthtundrag.namereplace.util;
 
 public class Platform {
     public static final PlatformHelper INSTANCE = findHelper();
 
     private static PlatformHelper findHelper() {
         try {
-            return (PlatformHelper) Class.forName("io.github.fifthtundrag.name_replace.fabric.FabricPlatformHelper")
+            return (PlatformHelper) Class.forName("io.github.fifthtundrag.namereplace.fabric.FabricPlatformHelper")
                     .getDeclaredConstructor()
                     .newInstance();
         } catch (ClassNotFoundException ignored) {
@@ -14,7 +14,7 @@ public class Platform {
         }
 
         try {
-            return (PlatformHelper) Class.forName("io.github.fifthtundrag.name_replace.neoforge.NeoForgePlatformHelper")
+            return (PlatformHelper) Class.forName("io.github.fifthtundrag.namereplace.neoforge.NeoForgePlatformHelper")
                     .getDeclaredConstructor()
                     .newInstance();
         } catch (ClassNotFoundException ignored) {

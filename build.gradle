@@ -49,7 +49,7 @@ subprojects {
         splitEnvironmentSourceSets()
 
         mods {
-            "name_replace" {
+            "namereplace" {
                 sourceSet sourceSets.main
                 sourceSet sourceSets.client
             }

@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "name_replace",
+  "id": "namereplace",
   "version": "${version}",
   "name": "NameReplace",
   "description": "Allows replacing a player's name in the tablist and in chat messages with another name",
   "authors": ["FifthTundraG"],
   "contact": {},
   "license": "GPL-3.0",
-  "icon": "assets/name_replace/icon.png",
+  "icon": "assets/namereplace/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.fifthtundrag.name_replace.fabric.NameReplaceFabric"
+      "io.github.fifthtundrag.namereplace.fabric.NameReplaceFabric"
     ]
   },
   "mixins": [
-    "name_replace.mixins.json"
+    "namereplace.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.0",

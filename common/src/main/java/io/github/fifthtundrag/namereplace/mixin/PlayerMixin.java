@@ -1,7 +1,7 @@
-package io.github.fifthtundrag.name_replace.mixin;
+package io.github.fifthtundrag.namereplace.mixin;
 
 import com.mojang.authlib.GameProfile;
-import io.github.fifthtundrag.name_replace.NameReplace;
+import io.github.fifthtundrag.namereplace.NameReplace;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Final;

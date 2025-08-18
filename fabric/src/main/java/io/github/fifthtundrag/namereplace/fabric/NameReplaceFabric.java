@@ -1,6 +1,6 @@
-package io.github.fifthtundrag.name_replace.fabric;
+package io.github.fifthtundrag.namereplace.fabric;
 
-import io.github.fifthtundrag.name_replace.NameReplace;
+import io.github.fifthtundrag.namereplace.NameReplace;
 import net.fabricmc.api.ModInitializer;
 
 public final class NameReplaceFabric implements ModInitializer {
