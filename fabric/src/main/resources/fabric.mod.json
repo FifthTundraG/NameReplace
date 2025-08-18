@@ -11,14 +11,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.fifthtundrag.name_replace.NameReplace"
+      "io.github.fifthtundrag.name_replace.fabric.NameReplaceFabric"
     ]
   },
   "mixins": [
     "name_replace.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=0.16.0",
     "minecraft": "~1.21"
   }
 }
