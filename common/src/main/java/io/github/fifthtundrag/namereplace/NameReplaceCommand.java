@@ -14,9 +14,9 @@ public class NameReplaceCommand {
     public static void register(CommandDispatcher<CommandSourceStack> commandDispatcher) {
         commandDispatcher.register(
                 Commands.literal("namereplace")
-                        .requires(commandSourceStack -> commandSourceStack.hasPermission(3))
+                        .requires(commandSourceStack -> commandSourceStack.hasPermission(NameReplace.config.commandPermissionLevel))
                         .executes(commandContext -> {
-                            commandContext.getSource().sendSuccess(() -> Component.literal(NameReplace.config.toString()), false);
+                            commandContext.getSource().sendSuccess(() -> Component.literal(NameReplace.config.replacements.toString()), false);
                             return 1;
                         })
                         .then(Commands.literal("add")
@@ -46,7 +46,7 @@ public class NameReplaceCommand {
     }
 
     private static int addName(CommandSourceStack commandSourceStack, String oldName, String newName) {
-        NameReplace.config.put(oldName, newName);
+        NameReplace.config.replacements.put(oldName, newName);
         NameReplace.configIO.save(NameReplace.config);
 
         // note to self: i18n isn't possible thru mojang's builtin system bc the server sends translation keys to the client and expects it to figure it out. the client won't have our lang files unless it also has the mod installed so it justs prints raw translation keys. this obviously will only work with english but at least it's better than the raw key.
@@ -56,7 +56,7 @@ public class NameReplaceCommand {
     }
 
     private static int removeName(CommandSourceStack commandSourceStack, String name) {
-        NameReplace.config.remove(name);
+        NameReplace.config.replacements.remove(name);
         NameReplace.configIO.save(NameReplace.config);
 
         commandSourceStack.sendSuccess(() -> Component.literal(String.format("Removed custom name for %s.", name)), true);
@@ -65,7 +65,7 @@ public class NameReplaceCommand {
     }
 
     private static int clearAll(CommandSourceStack commandSourceStack) {
-        NameReplace.config.clear();
+        NameReplace.config.replacements.clear();
         NameReplace.configIO.save(NameReplace.config);
 
         commandSourceStack.sendSuccess(() -> Component.literal("Cleared all replaced names."), true);

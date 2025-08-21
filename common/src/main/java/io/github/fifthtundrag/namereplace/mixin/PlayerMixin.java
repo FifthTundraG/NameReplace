@@ -19,8 +19,8 @@ public class PlayerMixin {
     @Inject(at = @At("HEAD"), method = "getName", cancellable = true)
     private void getName(CallbackInfoReturnable<Component> cir) {
         String realPlayerName = this.gameProfile.getName();
-        if (NameReplace.config.containsKey(realPlayerName)) {
-            final String newName = NameReplace.config.get(realPlayerName);
+        if (NameReplace.config.replacements.containsKey(realPlayerName)) {
+            final String newName = NameReplace.config.replacements.get(realPlayerName);
             cir.setReturnValue(Component.literal(newName));
         }
     }

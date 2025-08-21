@@ -1,6 +1,7 @@
 package io.github.fifthtundrag.namereplace;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.github.fifthtundrag.namereplace.config.Config;
 import io.github.fifthtundrag.namereplace.config.ConfigIO;
 import io.github.fifthtundrag.namereplace.util.Platform;
@@ -11,7 +12,7 @@ public class NameReplace {
     public static final String MOD_ID = "namereplace";
     public static final Logger LOGGER = LoggerFactory.getLogger("NameReplace");
 
-    public static final Gson GSON = new Gson();
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public static final ConfigIO configIO = new ConfigIO(Platform.INSTANCE.getConfigDir().resolve("namereplace.json"));
     public static Config config;

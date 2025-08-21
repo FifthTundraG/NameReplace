@@ -23,8 +23,8 @@ public class ClientboundPlayerInfoUpdatePacketEntryMixin {
     )
     private static Component redirectDisplayName(ServerPlayer player) {
         String realPlayerName = player.getGameProfile().getName();
-        if (NameReplace.config.containsKey(realPlayerName)) {
-            final String newName = NameReplace.config.get(realPlayerName);
+        if (NameReplace.config.replacements.containsKey(realPlayerName)) {
+            final String newName = NameReplace.config.replacements.get(realPlayerName);
             // these two lines are stolen from ServerPlayer#getDisplayName, can we figure out a way to not copy/paste them?
             MutableComponent mutableComponent = PlayerTeam.formatNameForTeam(player.getTeam(), Component.literal(newName));
             return ((PlayerInvoker) player).callDecorateDisplayNameComponent(mutableComponent);

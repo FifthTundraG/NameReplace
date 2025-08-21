@@ -2,7 +2,9 @@ package io.github.fifthtundrag.namereplace.config;
 
 import java.util.HashMap;
 
-// silly class go haha
-public class Config extends HashMap<String, String> {
+public class Config {
+    public HashMap<String, String> replacements = new HashMap<>();
+    public int commandPermissionLevel = 3;
+
     public Config() {}
 }
