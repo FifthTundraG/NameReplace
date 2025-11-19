@@ -1,17 +1,5 @@
-plugins {
-    id 'java'
-    id 'architectury-plugin' version '3.4-SNAPSHOT'
-}
-
 architectury {
     common rootProject.enabled_platforms.split(',')
-}
-
-group = 'your.group'
-version = '1.0.0'
-
-java {
-    withSourcesJar()
 }
 
 dependencies {
@@ -20,4 +8,3 @@ dependencies {
     // Do NOT use other classes from Fabric Loader.
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 }
-

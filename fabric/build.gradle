@@ -1,5 +1,5 @@
 plugins {
-    id 'com.gradleup.shadow'
+    id 'com.github.johnrengelman.shadow'
 }
 
 architectury {
@@ -30,15 +30,15 @@ dependencies {
     // carpet is essential for testing with the /player command but obviously not required
     modRuntimeOnly "maven.modrinth:carpet:${project.carpet_version}"
 
-    implementation(project(path: ':common', configuration: 'namedElements')) { transitive = false }
-    shadowBundle(project(path: ':common', configuration: 'namedElements')) { transitive = false }
+    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 }
 
 processResources {
-    inputs.property 'version', rootProject.mod_version
+    inputs.property 'version', project.version
 
     filesMatching('fabric.mod.json') {
-        expand version: rootProject.mod_version
+        expand version: project.version
     }
 }
 
@@ -48,5 +48,5 @@ shadowJar {
 }
 
 remapJar {
-    inputFile.set shadowJar.archiveFile
+    input.set shadowJar.archiveFile
 }
