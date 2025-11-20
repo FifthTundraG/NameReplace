@@ -3,11 +3,15 @@
   "id": "namereplace",
   "version": "${version}",
   "name": "NameReplace",
-  "description": "Allows replacing a player's name in the tablist and in chat messages with another name",
+  "description": "Allows replacing a player's name with another name",
   "authors": ["FifthTundraG"],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/namereplace",
+    "sources": "https://github.com/FifthTundraG/NameReplace",
+    "issues": "https://github.com/FifthTundraG/NameReplace/issues"
+  },
   "license": "GPL-3.0",
-  "icon": "assets/namereplace/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [

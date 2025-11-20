@@ -9,9 +9,9 @@ version = "${version}"
 displayName = "NameReplace"
 authors = "FifthTundraG"
 description = '''
-Allows replacing a player's name in the tablist and in chat messages with another name
+Allows replacing a player's name with another name
 '''
-logoFile = "META-INF/icon.png"
+logoFile = "icon.png"
 
 [[dependencies.namereplace]]
 modId = "neoforge"
