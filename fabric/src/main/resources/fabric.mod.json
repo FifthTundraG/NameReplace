@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "namereplace",
+  "version": "${version}",
+  "name": "NameReplace",
+  "description": "Allows replacing a player's name with another name",
+  "authors": ["FifthTundraG"],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/namereplace",
+    "sources": "https://github.com/FifthTundraG/NameReplace",
+    "issues": "https://github.com/FifthTundraG/NameReplace/issues"
+  },
+  "license": "GPL-3.0",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.fifthtundrag.namereplace.fabric.NameReplaceFabric"
+    ]
+  },
+  "mixins": [
+    "namereplace.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21"
+  }
+}
