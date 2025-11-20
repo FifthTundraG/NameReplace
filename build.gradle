@@ -19,8 +19,14 @@ subprojects {
     apply plugin: 'maven-publish'
 
     base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
+        // sets name, but gets overwritten by remapJar below. this is just used for friendlier names for -sources and -dev-shadow jars
         archivesName = "$rootProject.archives_name-$project.name"
+    }
+
+    // sets name for the final jar
+    tasks.named("remapJar") {
+        archiveBaseName.set("$rootProject.archives_name")
+        archiveVersion.set("$project.version-$project.name+mc$project.minecraft_version")
     }
 
     repositories {
