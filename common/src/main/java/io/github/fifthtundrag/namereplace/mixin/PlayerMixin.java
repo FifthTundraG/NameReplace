@@ -11,7 +11,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-// This is used for whenever the *server* broadcasts the player's name.
+/**
+ * This is used for whenever the *server* broadcasts the player's name.
+ * <p>
+ * This alone is not fully functional on NeoForge. See NameFormatHandler in neoforge/ for the implementation there.
+ * NeoForge seems to inconsistently require this mixin to work so it is not loaded exclusively on Fabric.
+ * */
 @Mixin(Player.class)
 public class PlayerMixin {
     @Shadow @Final private GameProfile gameProfile;

@@ -2,10 +2,12 @@ package io.github.fifthtundrag.namereplace;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import io.github.fifthtundrag.namereplace.util.Platform;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 
 import java.util.EnumSet;
@@ -74,6 +76,10 @@ public class NameReplaceCommand {
     }
 
     private static void sendPlayerInfoUpdate(PlayerList playerList) {
+        for (ServerPlayer player : playerList.getPlayers()) {
+            Platform.INSTANCE.refreshPlayerDisplayName(player);
+        }
+
         playerList.broadcastAll(new ClientboundPlayerInfoUpdatePacket(EnumSet.of(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_DISPLAY_NAME), playerList.getPlayers()));
     }
 }
