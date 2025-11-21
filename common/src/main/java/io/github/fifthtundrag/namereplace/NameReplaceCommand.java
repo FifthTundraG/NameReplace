@@ -10,7 +10,9 @@ import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 
-import java.util.EnumSet;
+import java.util.*;
+
+import static net.minecraft.commands.SharedSuggestionProvider.suggest;
 
 public class NameReplaceCommand {
     public static void register(CommandDispatcher<CommandSourceStack> commandDispatcher) {
@@ -23,16 +25,18 @@ public class NameReplaceCommand {
                         })
                         .then(Commands.literal("add")
                             .then(Commands.argument("old_name", StringArgumentType.word())
-                                .then(Commands.argument("new_name", StringArgumentType.string())
-                                        .executes(commandContext -> addName(
-                                                commandContext.getSource(),
-                                                StringArgumentType.getString(commandContext, "old_name"),
-                                                StringArgumentType.getString(commandContext, "new_name")
-                                        ))
-                                )
+                                    .suggests((c, b) -> suggest(getConfigAndActivePlayersSuggestion(c.getSource()), b))
+                                    .then(Commands.argument("new_name", StringArgumentType.string())
+                                            .executes(commandContext -> addName(
+                                                    commandContext.getSource(),
+                                                    StringArgumentType.getString(commandContext, "old_name"),
+                                                    StringArgumentType.getString(commandContext, "new_name")
+                                            ))
+                                    )
                             ))
                         .then(Commands.literal("remove")
                             .then(Commands.argument("name", StringArgumentType.word())
+                                    .suggests((c, b) -> suggest(getConfigPlayersSuggestion(), b))
                                     .executes(commandContext -> removeName(
                                             commandContext.getSource(),
                                             StringArgumentType.getString(commandContext, "name")
@@ -40,9 +44,9 @@ public class NameReplaceCommand {
                             )
                         )
                         .then(Commands.literal("clear")
-                            .executes(commandContext -> clearAll(
-                                commandContext.getSource()
-                            ))
+                                .executes(commandContext -> clearAll(
+                                    commandContext.getSource()
+                                ))
                         )
         );
     }
@@ -81,5 +85,21 @@ public class NameReplaceCommand {
         }
 
         playerList.broadcastAll(new ClientboundPlayerInfoUpdatePacket(EnumSet.of(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_DISPLAY_NAME), playerList.getPlayers()));
+    }
+
+    private static Collection<String> getConfigAndActivePlayersSuggestion(CommandSourceStack commandSourceStack) {
+        Collection<String> players = new ArrayList<>();
+        for (ServerPlayer player : commandSourceStack.getServer().getPlayerList().getPlayers()) {
+            players.add(player.getGameProfile().getName()); // use GameProfile name so we don't end up with the custom names showing up in the list
+        }
+
+        Collection<String> combined = new TreeSet<>();
+        combined.addAll(NameReplace.config.replacements.keySet());
+        combined.addAll(players);
+
+        return combined;
+    }
+    private static Collection<String> getConfigPlayersSuggestion() {
+        return NameReplace.config.replacements.keySet();
     }
 }
