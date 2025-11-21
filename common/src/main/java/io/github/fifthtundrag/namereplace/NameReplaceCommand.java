@@ -2,6 +2,7 @@ package io.github.fifthtundrag.namereplace;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.github.fifthtundrag.namereplace.util.Platform;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -16,7 +17,7 @@ import static net.minecraft.commands.SharedSuggestionProvider.suggest;
 
 public class NameReplaceCommand {
     public static void register(CommandDispatcher<CommandSourceStack> commandDispatcher) {
-        commandDispatcher.register(
+        LiteralCommandNode<CommandSourceStack> literalCommandNode = commandDispatcher.register(
                 Commands.literal("namereplace")
                         .requires(commandSourceStack -> commandSourceStack.hasPermission(NameReplace.config.commandPermissionLevel))
                         .then(Commands.literal("add")
@@ -50,6 +51,9 @@ public class NameReplaceCommand {
                                 ))
                         )
         );
+        if (NameReplace.config.replaceNameCommandAlias) {
+            commandDispatcher.register(Commands.literal("replacename").requires(commandSourceStack -> commandSourceStack.hasPermission(NameReplace.config.commandPermissionLevel)).redirect(literalCommandNode));
+        }
     }
 
     private static int addName(CommandSourceStack commandSourceStack, String oldName, String newName) {
