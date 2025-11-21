@@ -19,10 +19,6 @@ public class NameReplaceCommand {
         commandDispatcher.register(
                 Commands.literal("namereplace")
                         .requires(commandSourceStack -> commandSourceStack.hasPermission(NameReplace.config.commandPermissionLevel))
-                        .executes(commandContext -> {
-                            commandContext.getSource().sendSuccess(() -> Component.literal(NameReplace.config.replacements.toString()), false);
-                            return 1;
-                        })
                         .then(Commands.literal("add")
                             .then(Commands.argument("old_name", StringArgumentType.word())
                                     .suggests((c, b) -> suggest(getConfigAndActivePlayersSuggestion(c.getSource()), b))
@@ -43,6 +39,11 @@ public class NameReplaceCommand {
                                     ))
                             )
                         )
+                        .then(Commands.literal("list")
+                                .executes(commandContext -> {
+                                    commandContext.getSource().sendSuccess(() -> Component.literal(NameReplace.config.replacements.toString()), false);
+                                    return 1;
+                                }))
                         .then(Commands.literal("clear")
                                 .executes(commandContext -> clearAll(
                                     commandContext.getSource()
