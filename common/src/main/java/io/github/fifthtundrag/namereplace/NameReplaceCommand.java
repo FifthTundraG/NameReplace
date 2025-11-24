@@ -95,7 +95,7 @@ public class NameReplaceCommand {
     private static Collection<String> getConfigAndActivePlayersSuggestion(CommandSourceStack commandSourceStack) {
         Collection<String> players = new ArrayList<>();
         for (ServerPlayer player : commandSourceStack.getServer().getPlayerList().getPlayers()) {
-            players.add(player.getGameProfile().getName()); // use GameProfile name so we don't end up with the custom names showing up in the list
+            players.add(player.getGameProfile().name()); // use GameProfile name so we don't end up with the custom names showing up in the list
         }
 
         Collection<String> combined = new TreeSet<>();

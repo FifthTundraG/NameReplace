@@ -14,7 +14,7 @@ public class NameFormatHandler {
      * */
     @SubscribeEvent
     public void onNameFormat(PlayerEvent.NameFormat event) {
-        String realPlayerName = event.getEntity().getGameProfile().getName();
+        String realPlayerName = event.getEntity().getGameProfile().name();
         if (NameReplace.config.replacements.containsKey(realPlayerName)) {
             String newName = io.github.fifthtundrag.namereplace.NameReplace.config.replacements.get(realPlayerName);
             event.setDisplayname(Component.literal(newName));

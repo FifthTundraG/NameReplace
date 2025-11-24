@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 // This is used for the client so it has the correct display name. This will show in the tablist but not nametags.
 @Mixin(ClientboundPlayerInfoUpdatePacket.Entry.class)
 public class ClientboundPlayerInfoUpdatePacketEntryMixin {
-
     @Redirect(
             method = "<init>(Lnet/minecraft/server/level/ServerPlayer;)V",
             at = @At(
@@ -22,7 +21,7 @@ public class ClientboundPlayerInfoUpdatePacketEntryMixin {
             )
     )
     private static Component redirectDisplayName(ServerPlayer player) {
-        String realPlayerName = player.getGameProfile().getName();
+        String realPlayerName = player.getGameProfile().name();
         if (NameReplace.config.replacements.containsKey(realPlayerName)) {
             final String newName = NameReplace.config.replacements.get(realPlayerName);
             // these two lines are stolen from ServerPlayer#getDisplayName, can we figure out a way to not copy/paste them?
