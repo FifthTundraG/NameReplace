@@ -19,7 +19,8 @@
     ]
   },
   "mixins": [
-    "namereplace.mixins.json"
+    "namereplace.mixins.json",
+    "namereplace-fabric.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.0",

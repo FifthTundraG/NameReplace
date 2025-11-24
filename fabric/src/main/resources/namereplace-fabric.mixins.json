@@ -1,12 +1,10 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "io.github.fifthtundrag.namereplace.mixin",
+  "package": "io.github.fifthtundrag.namereplace.fabric.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ClientboundPlayerInfoUpdatePacketEntryMixin",
-    "PlayerInvoker",
-    "PlayerMixin"
+    "CommandsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

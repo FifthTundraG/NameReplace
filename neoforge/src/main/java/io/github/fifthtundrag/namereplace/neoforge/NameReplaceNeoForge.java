@@ -11,5 +11,6 @@ public final class NameReplaceNeoForge {
         NameReplace.init();
 
         NeoForge.EVENT_BUS.register(new NameFormatHandler());
+        NeoForge.EVENT_BUS.register(new CommandHandler());
     }
 }
