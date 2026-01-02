@@ -9,6 +9,8 @@ import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.permissions.Permission;
+import net.minecraft.server.permissions.PermissionLevel;
 import net.minecraft.server.players.PlayerList;
 
 import java.util.*;
@@ -19,7 +21,7 @@ public class NameReplaceCommand {
     public static void register(CommandDispatcher<CommandSourceStack> commandDispatcher) {
         LiteralCommandNode<CommandSourceStack> literalCommandNode = commandDispatcher.register(
                 Commands.literal("namereplace")
-                        .requires(commandSourceStack -> commandSourceStack.hasPermission(NameReplace.config.commandPermissionLevel))
+                        .requires(source -> source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.byId(NameReplace.config.commandPermissionLevel))))
                         .then(Commands.literal("add")
                             .then(Commands.argument("old_name", StringArgumentType.word())
                                     .suggests((c, b) -> suggest(getConfigAndActivePlayersSuggestion(c.getSource()), b))
@@ -52,7 +54,7 @@ public class NameReplaceCommand {
                         )
         );
         if (NameReplace.config.replaceNameCommandAlias) {
-            commandDispatcher.register(Commands.literal("replacename").requires(commandSourceStack -> commandSourceStack.hasPermission(NameReplace.config.commandPermissionLevel)).redirect(literalCommandNode));
+            commandDispatcher.register(Commands.literal("replacename").requires(source -> source.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.byId(NameReplace.config.commandPermissionLevel)))).redirect(literalCommandNode)); //* perms are copied from main command above
         }
     }
 
