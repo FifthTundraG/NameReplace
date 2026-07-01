@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * I don't want to require the Fabric API for something small like this so I prefer just mixing into Commands instead
  * <p>
- * Fabric only: NeoForge instantiates {@link Commands} way before Fabric so fails when {@link io.github.fifthtundrag.namereplace.NameReplace#config} is null. Use native command registration for that loader instead.
+ * Fabric only: NeoForge instantiates {@link Commands} way before Fabric, so fails when {@link io.github.fifthtundrag.namereplace.NameReplace#config} is null. Use native command registration for that loader instead.
  */
 @Mixin(Commands.class)
 public class CommandsMixin {

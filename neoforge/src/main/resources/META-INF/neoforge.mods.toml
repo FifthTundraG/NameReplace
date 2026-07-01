@@ -16,14 +16,14 @@ logoFile = "icon.png"
 [[dependencies.namereplace]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.11,)"
+versionRange = "[26.1,)"
 ordering = "NONE"
 side = "SERVER"
 
 [[dependencies.namereplace]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.11,)" # todo: for some reason this field is just completely ignored
+versionRange = "[26.1,)" # todo: for some reason this field is just completely ignored
 ordering = "NONE"
 side = "SERVER"
 
